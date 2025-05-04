@@ -295,7 +295,7 @@ const Gestion = () => {
 
   return (
     <div className="gestion-container">
-      {/* Sidebar */}
+      {/* Sidebar */} {/* separar a un componente sidebar.jsx */}
       <div className="sidebar">
         <div className="sidebar-header">
           <h2>FinanzasPro</h2>

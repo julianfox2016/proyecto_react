@@ -1,21 +1,25 @@
-// src/context/AuthContext.jsx
-import { createContext, useState, useContext } from 'react';
+import { createContext, useState, useContext, useEffect } from 'react';
 
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
+  useEffect(() => {
+    // Verificar si el usuario ya estaba autenticado
+    const authStatus = localStorage.getItem('isAuthenticated');
+    if (authStatus === 'true') {
+      setIsAuthenticated(true);
+    }
+  }, []);
+
   const login = () => {
     setIsAuthenticated(true);
-    // Guardar en loc
-    // alStorage
     localStorage.setItem('isAuthenticated', 'true');
   };
 
   const logout = () => {
     setIsAuthenticated(false);
-    // Limpiar localStorage
     localStorage.removeItem('isAuthenticated');
   };
 
